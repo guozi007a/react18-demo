@@ -1,0 +1,30 @@
+.wrap {
+  position: relative;
+  width: 400px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  border: 1px solid pink;
+  margin: auto;
+}
+
+.swiper-pagination {
+  bottom: 0px!important;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.swiper-pagination .my-bullet {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: pink;
+}
+
+.swiper-pagination .my-bullet.my-bullet-active {
+  background-color: blue;
+}
