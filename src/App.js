@@ -1,9 +1,9 @@
 import './App.css';
-import SwiperComponent from './components/swiperComponents'
+import WaterFall from './components/waterfallDemo/index2'
 
 const App = () => {
   return <>
-    <SwiperComponent />
+    <WaterFall />
   </>
 }
 
