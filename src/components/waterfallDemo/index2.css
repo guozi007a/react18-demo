@@ -1,0 +1,17 @@
+.waterfall_wrap {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 420px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.column1,
+.column2 {
+  width: 200px;
+}
+
+img {
+  width: 100%;
+}
