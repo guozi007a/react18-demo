@@ -1,5 +1,5 @@
 import './App.css';
-import WaterFall from './components/waterfallDemo/index2'
+import WaterFall from './components/waterfallDemo/index1'
 
 const App = () => {
   return <>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './index1.css'
 import datas from './datas'
+import _ from 'lodash'
 
 const WaterFall = () => {
 
@@ -33,13 +34,13 @@ const WaterFall = () => {
     }
 
     init(1)
-
     window.addEventListener('scroll', function () {
       let t = document.documentElement.scrollTop
       let h = document.documentElement.clientHeight
       console.log(t, h)
-      if (t > h) {
-        init(Math.ceil(t / h))
+      if (t > h / 2) {
+        let debounced = _.debounce(init, 150)
+        debounced(Math.ceil(t / h))
       }
     })
   }, [])
