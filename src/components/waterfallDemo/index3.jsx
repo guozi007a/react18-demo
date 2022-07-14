@@ -1,45 +1,58 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './index3.css'
 import datas from './datas'
 
+let height1 = 0
+let height2 = 0
+let minHeight = 0
+let page = 1
+let data = []
+const showNum = 10
+const seeHeight = 800
+const f1 = document.createDocumentFragment()
+const f2 = document.createDocumentFragment()
+
 const WaterFall = () => {
 
-  const imgRate = 0.4 // 图片等比缩放的比例
-  const showNum = 10 // 单页显示条数
+  const wrap = useRef(null)
+  const column1 = useRef(null)
+  const column2 = useRef(null)
 
-  const [data1, setData1] = useState([])
-  const [data2, setData2] = useState([])
-  const [totalHeight, setTotalHeight] = useState(0)
-  const [totalHeight1, setTotalHeight1] = useState(0)
-  const [totalHeight2, setTotalHeight2] = useState(0)
+  function addImage() {
+    data = datas.slice((page - 1) * showNum, page * showNum)
+    if(data.length === 0) return
+    for (let i = 0; i < data.length; i++) {
+      const img = new Image()
+      img.src = data[i].img
+      if (height1 <= height2) {
+        f1.appendChild(img)
+        height1 += Math.round(data[i].height * 200 / data[i].width)
+      } else {
+        f2.appendChild(img)
+        height2 += Math.round(data[i].height * 200 / data[i].width)
+      }
+    }
+    console.log('f1: ', f1)
+    console.log('height1: ', height1, 'height2: ', height2)
+    column1.current.appendChild(f1)
+    column2.current.appendChild(f2)
+    minHeight = Math.min(height1, height2)
+    page++
+  }
 
   useEffect(() => {
-    // 获取所有数据排列好之后 左右列表各自总高度
-    let i = 0
-    let _totalHeight1 = 0
-    let _totalHeight2 = 0
-    while (i < datas.length) {
-      _totalHeight1 <= _totalHeight2
-        ? _totalHeight1 += Math.round(datas[i].height * imgRate)
-        : _totalHeight2 += Math.round(datas[i].height * imgRate)
-      i++
-    }
-    setTotalHeight1(_totalHeight1)
-    setTotalHeight2(_totalHeight2)
-    setTotalHeight(Math.max(_totalHeight1, _totalHeight2))
+    addImage()
+    wrap.current.addEventListener('scroll', function () {
+      const t = this.scrollTop
+      if (t + seeHeight >= minHeight - 100) {
+        console.log('t: ', t, '  ', 'minHeight: ', minHeight)
+        addImage()
+      }
+    })
   }, [])
-
-  return <div className='waterfall_wrap'>
-    <div className='column1' style={{height: totalHeight1}}>
-      {
-        data1.map((item, index) => <img src={item.img} key={index} alt="" />)
-      }
-    </div>
-    <div className='column2' style={{height: totalHeight2}}>
-      {
-        data2.map((item, index) => <img src={item.img} key={index} alt="" />)
-      }
-    </div>
+  return <div className='wrap' ref={wrap}>
+    <div className='column1' ref={column1}></div>
+    <div className='column2' ref={column2}></div>
   </div>
 }
 

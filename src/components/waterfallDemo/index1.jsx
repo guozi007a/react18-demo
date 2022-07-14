@@ -16,7 +16,6 @@ const WaterFall = () => {
       let i = 0
       let totalHeight1 = 0
       let totalHeight2 = 0
-      // let currentPage = 1
       let numsOnePage = 10
       while (i < Math.min(numsOnePage * num, datas.length)) {
         if (totalHeight1 <= totalHeight2) {

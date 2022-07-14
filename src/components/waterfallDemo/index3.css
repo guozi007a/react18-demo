@@ -1,32 +1,30 @@
-.waterfall_wrap {
+.wrap {
   position: relative;
-  width: 420px;
-  height: 800px;
-  margin: auto;
-  margin-top: 20px;
-  border: 1px solid gray;
   display: flex;
   justify-content: space-between;
-  overflow: hidden;
+  width: 420px;
+  height: 800px;
+  border: 1px solid gray;
   overflow-y: auto;
+  margin: auto;
+  margin-top: 20px;
 }
 
-.waterfall_wrap::-webkit-scrollbar {
+.wrap::-webkit-scrollbar {
   width: 5px;
 }
-.waterfall_wrap::-webkit-scrollbar-track {
+.wrap::-webkit-scrollbar-track {
   background-color: transparent;
 }
-.waterfall_wrap::-webkit-scrollbar-thumb {
+.wrap::-webkit-scrollbar-thumb {
   background-color: rgba(0 0 0 / 30%);
   border-radius: 2px;
 }
 
 .column1, .column2 {
-  position: relative;
   width: 200px;
 }
-
 img {
   width: 100%;
+  vertical-align: bottom;
 }
