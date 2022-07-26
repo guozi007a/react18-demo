@@ -1,9 +1,9 @@
 import './App.css';
-import WaterFall from './components/waterfallDemo/index3'
+import RepeatDemo from './components/repeatDemo'
 
 const App = () => {
   return <>
-    <WaterFall />
+    <RepeatDemo />
   </>
 }
 
