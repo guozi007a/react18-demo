@@ -6,8 +6,7 @@ const RepeatDemo = () => {
 
   useEffect(() => {
     console.log('count: ', count)
-    setCount(count + 3)
-  }, [])
+  })
   return <div>
     <h3>{count}</h3>
     <button
